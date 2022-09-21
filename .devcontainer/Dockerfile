@@ -12,6 +12,8 @@ COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
 RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
     && rm -rf /tmp/conda-tmp
 
+RUN conda init bash
+
 # [Optional] Uncomment to install a different version of Python than the default
 # RUN conda install -y python=3.10
     # && pip install --no-cache-dir pipx \
