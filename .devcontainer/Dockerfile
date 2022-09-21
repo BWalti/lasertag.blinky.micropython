@@ -13,14 +13,17 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bi
     && rm -rf /tmp/conda-tmp
 
 # [Optional] Uncomment to install a different version of Python than the default
-# RUN conda install -y python=3.6 \
-#     && pip install --no-cache-dir pipx \
-#     && pipx reinstall-all
+# RUN conda install -y python=3.10
+    # && pip install --no-cache-dir pipx \
+    # && pipx reinstall-all
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# install picocom
+RUN sudo apt update \
+    && sudo apt install -y picocom
 
 # Install MicroPy and MarkupSafe in specific version so that MicroPy does not break
-RUN pip install --upgrade micropy-cli \
+RUN pip install esptool \
+    && pip install --upgrade micropy-cli \
     && pip install markupsafe==2.0.1
+
+RUN micropy stubs add esp32-micropython-1.12.0

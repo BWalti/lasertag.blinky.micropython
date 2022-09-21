@@ -2,8 +2,14 @@
 from machine import Pin
 from time import sleep
 
-pin2 = Pin(2, Pin.OUT);
-pin2.on();
+pin2 = Pin(2, Pin.OUT)
+pin2.on()
 
-sleep(0.5);
-pin2.off();
+sleep(0.5)
+pin2.off()
+
+sleep(0.5)
+pin2.on()
+
+sleep(0.5)
+pin2.off()
